@@ -38,7 +38,7 @@ As the package is not yet published to the npm registry, you can install and run
 
 ```bash
 # Clone the repository
-git clone https://github.com/[your-username]/repodoctor.git
+git clone https://github.com/lucasgasl/repodoctor.git
 cd repodoctor
 
 # Install dependencies
