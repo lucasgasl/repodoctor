@@ -38,18 +38,49 @@ As the package is not yet published to the npm registry, you can install and run
 
 ```bash
 # Clone the repository
-git clone https://github.com/lucasgasl/repodoctor.git
+git clone https://github.com/[your-username]/repodoctor.git
 cd repodoctor
 
 # Install dependencies
 npm install
 
-# Build the project
+# Build the project (required: generates dist/index.js)
 npm run build
 
 # Link the CLI globally for local testing
 npm link
 ```
+
+### Fixing `npm link` permission errors
+
+On Linux/macOS, `npm link` may fail with `EACCES: permission denied, mkdir '/usr/local/lib/node_modules'`
+because the global npm directory is owned by root. **Do not use `sudo`**; instead, point npm's global
+prefix to a directory owned by your user and make sure its `bin` folder is on your `PATH`:
+
+```bash
+# Use ~/.local as the global npm prefix
+npm config set prefix "$HOME/.local"
+
+# Link the CLI again
+npm link
+
+# Make the linked binary available in the current shell
+export PATH="$HOME/.local/bin:$PATH"
+
+# Verify the installation
+repodoctor --help
+```
+
+To make the `PATH` change permanent, add it to your shell profile (`~/.bashrc`, `~/.zshrc`, etc.):
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+```
+
+To revert the prefix change later, run `npm config delete prefix`.
+
+> On Windows, `npm link` creates the executable shim automatically in `%APPDATA%\npm`, so the
+> steps above are usually not needed.
 
 ## Quick Start
 
