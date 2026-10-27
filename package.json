@@ -1,0 +1,27 @@
+{
+  "name": "repodoctor",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "repodoctor": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsup",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "eslint": "^9.11.1",
+    "prettier": "^3.3.3",
+    "tsup": "^8.0.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.1"
+  }
+}
